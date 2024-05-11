@@ -1,0 +1,103 @@
+<svg height="800" width="1000" xmlns="http://www.w3.org/2000/svg">
+<title>Your Diagram Title</title>
+<!-- Generated with SankeyMATIC: 11/05/2024, 14:42:27 -->
+<rect height="800" width="1000" fill="#ffffff"></rect>
+<g transform="translate(145.83879,18)">
+<g id="sankey_flows">
+<path id="flow0" d="M12 206.81744C77.87443 206.81744 77.87443 217.70686 143.74886 217.70686" fill="none" stroke-width="295.76923" stroke="#17becf" opacity="0.45"><title>I applied to them → Application: 100</title></path>
+<path id="flow2" d="M155.74886 158.55302C293.49772 158.55302 293.49772 115.13747 431.24658 115.13747" fill="none" stroke-width="177.46154" stroke="#1f77b4" opacity="0.45"><title>Application → Not Contacted: 60</title></path>
+<path id="flow5" d="M155.74886 299.0434C437.24658 299.0434 437.24658 321.94102 718.7443 321.94102" fill="none" stroke-width="103.51923" stroke="#2ca02c" opacity="0.45"><title>Application → Not Selected: 35</title></path>
+<path id="flow1" d="M12 446.25494C77.87443 446.25494 77.87443 409.95686 143.74886 409.95686" fill="none" stroke-width="88.73077" stroke="#ff7f0e" opacity="0.45"><title>They applied to me → Application: 30</title></path>
+<path id="flow6" d="M155.74886 395.1684C221.62329 395.1684 221.62329 449.7433 287.49772 449.7433" fill="none" stroke-width="88.73077" stroke="#1f77b4" opacity="0.45"><title>Application → Screening: 30</title></path>
+<path id="flow8" d="M299.49772 421.64523C365.37215 421.64523 365.37215 220.13555 431.24658 220.13555" fill="none" stroke-width="32.53462" stroke="#8c564b" opacity="0.45"><title>Screening → Not Contacted: 11</title></path>
+<path id="flow7" d="M299.49772 482.27792C357.87215 482.27792 357.87215 616.2383 416.24658 616.2383" fill="none" stroke-width="23.66154" stroke="#8c564b" opacity="0.45"><title>Screening → First Interview: 8</title></path>
+<path id="flow11" d="M299.49772 448.26446C509.12101 448.26446 509.12101 384.05256 718.7443 384.05256" fill="none" stroke-width="20.70385" stroke="#2ca02c" opacity="0.45"><title>Screening → Not Selected: 7</title></path>
+<path id="flow14" d="M428.24658 611.80176C496.49544 611.80176 496.49544 547.65012 564.7443 547.65012" fill="none" stroke-width="14.78846" stroke="#bcbd22" opacity="0.45"><title>First Interview → Second Interview: 5</title></path>
+<path id="flow4" d="M155.74886 448.40686C437.24658 448.40686 437.24658 635.17833 718.7443 635.17833" fill="none" stroke-width="11.83077" stroke="#9467bd" opacity="0.45"><title>Application → Position Closed: 4</title></path>
+<path id="flow10" d="M299.49772 466.01061C509.12101 466.01061 509.12101 615.95333 718.7443 615.95333" fill="none" stroke-width="8.87308" stroke="#9467bd" opacity="0.45"><title>Screening → Position Closed: 3</title></path>
+<path id="flow13" d="M428.24658 622.15369C573.49544 622.15369 573.49544 626.30525 718.7443 626.30525" fill="none" stroke-width="5.91538" stroke="#9467bd" opacity="0.45"><title>First Interview → Position Closed: 2</title></path>
+<path id="flow15" d="M576.7443 549.12897C647.7443 549.12897 647.7443 561.3716 718.7443 561.3716" fill="none" stroke-width="5.91538" stroke="#17becf" opacity="0.45"><title>Second Interview → Offer Extended: 2</title></path>
+<path id="flow17" d="M576.7443 543.21359C647.7443 543.21359 647.7443 397.36217 718.7443 397.36217" fill="none" stroke-width="5.91538" stroke="#2ca02c" opacity="0.45"><title>Second Interview → Not Selected: 2</title></path>
+<path id="flow3" d="M155.74886 441.01263C280.49772 441.01263 280.49772 449.05045 405.24658 449.05045" fill="none" stroke-width="2.95769" stroke="#1f77b4" opacity="0.45"><title>Application → Moved to Different Team: 1</title></path>
+<path id="flow9" d="M299.49772 460.09523C352.37215 460.09523 352.37215 446.09276 405.24658 446.09276" fill="none" stroke-width="2.95769" stroke="#8c564b" opacity="0.45"><title>Screening → Moved to Different Team: 1</title></path>
+<path id="flow12" d="M428.24658 626.59023C501.62101 626.59023 501.62101 675.09618 574.99544 675.09618" fill="none" stroke-width="2.95769" stroke="#7f7f7f" opacity="0.45"><title>First Interview → Withdrew: 1</title></path>
+<path id="flow16" d="M576.7443 553.56551C647.7443 553.56551 647.7443 621.86871 718.7443 621.86871" fill="none" stroke-width="2.95769" stroke="#9467bd" opacity="0.45"><title>Second Interview → Position Closed: 1</title></path>
+</g>
+<g id="sankey_nodes">
+<g class="node">
+<rect id="r0" class="for_r0" x="0" y="58.93283" height="295.76923" width="12" fill="#17becf" fill-opacity="1"><title>I applied to them:
+100</title></rect>
+</g>
+<g class="node">
+<rect id="r1" class="for_r1" x="143.74886" y="69.82225" height="384.5" width="12" fill="#1f77b4" fill-opacity="1"><title>Application:
+130</title></rect>
+</g>
+<g class="node">
+<rect id="r2" class="for_r2" x="0" y="401.88956" height="88.73077" width="12" fill="#ff7f0e" fill-opacity="1"><title>They applied to me:
+30</title></rect>
+</g>
+<g class="node">
+<rect id="r3" class="for_r3" x="431.24658" y="26.4067" height="209.99615" width="12" fill="#2ca02c" fill-opacity="1"><title>Not Contacted:
+71</title></rect>
+</g>
+<g class="node">
+<rect id="r4" class="for_r4" x="431.24658" y="558.24901" height="5.91538" width="12" fill="#d62728" fill-opacity="1" transform="translate(-26,-113.6351)"><title>Moved to Different Team:
+2</title></rect>
+</g>
+<g class="node">
+<rect id="r5" class="for_r5" x="718.7443" y="611.51679" height="29.57692" width="12" fill="#9467bd" fill-opacity="1"><title>Position Closed:
+10</title></rect>
+</g>
+<g class="node">
+<rect id="r6" class="for_r6" x="718.7443" y="297.55521" height="130.13846" width="12" fill="#2ca02c" fill-opacity="1" transform="translate(0,-27.37381)"><title>Not Selected:
+44</title></rect>
+</g>
+<g class="node">
+<rect id="r7" class="for_r7" x="287.49772" y="405.37792" height="88.73077" width="12" fill="#8c564b" fill-opacity="1"><title>Screening:
+30</title></rect>
+</g>
+<g class="node">
+<rect id="r8" class="for_r8" x="431.24658" y="611.3519" height="23.66154" width="12" fill="#e377c2" fill-opacity="1" transform="translate(-15,-6.94436)"><title>First Interview:
+8</title></rect>
+</g>
+<g class="node">
+<rect id="r9" class="for_r9" x="574.99544" y="673.61733" height="2.95769" width="12" fill="#7f7f7f" fill-opacity="1"><title>Withdrew:
+1</title></rect>
+</g>
+<g class="node">
+<rect id="r10" class="for_r10" x="574.99544" y="558.53849" height="14.78846" width="12" fill="#bcbd22" fill-opacity="1" transform="translate(-10.25114,-18.28259)"><title>Second Interview:
+5</title></rect>
+</g>
+<g class="node">
+<rect id="r11" class="for_r11" x="718.7443" y="558.41391" height="5.91538" width="12" fill="#17becf" fill-opacity="1"><title>Offer Extended:
+2</title></rect>
+</g>
+</g>
+<g id="sankey_labels" font-family="sans-serif" font-size="16px" fill="#000000">
+<text text-anchor="middle" x="354.16121" y="777" font-size="12.1338px" font-weight="400" fill="#336781">Made at SankeyMATIC.com</text>
+<rect id="label0_bg" class="for_r0" x="-117.83098" y="186.29244" width="116.19828" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label0" class="for_r0" text-anchor="end" x="-6.29754" y="206.81744" font-weight="400" font-size="14.4px" dy="-5.125">I applied to them<tspan x="-6.29754" dy="19.32" font-weight="400" font-size="17.6px">100</tspan></text>
+<rect id="label1_bg" class="for_r1" x="109.85745" y="241.54724" width="80.18266" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label1" class="for_r1" text-anchor="middle" x="149.74886" y="262.07225" font-weight="400" font-size="14.4px" dy="-5.125">Application<tspan x="149.74886" dy="19.32" font-weight="400" font-size="17.6px">130</tspan></text>
+<rect id="label2_bg" class="for_r2" x="-133.8388" y="425.72994" width="132.20609" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label2" class="for_r2" text-anchor="end" x="-6.29754" y="446.25494" font-weight="400" font-size="14.4px" dy="-5.125">They applied to me<tspan x="-6.29754" dy="19.32" font-weight="400" font-size="17.6px">30</tspan></text>
+<rect id="label3_bg" class="for_r3" x="444.87928" y="110.87979" width="101.78422" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label3" class="for_r3" text-anchor="start" x="449.54412" y="131.40478" font-weight="400" font-size="14.4px" dy="-5.125">Not Contacted<tspan x="449.54412" dy="19.32" font-weight="400" font-size="17.6px">71</tspan></text>
+<rect id="label4_bg" class="for_r4" x="444.87928" y="540.68173" width="166.09672" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0" transform="translate(-26,-113.6351)"></rect>
+<text id="label4" class="for_r4" text-anchor="start" x="449.54412" y="561.2067" font-weight="400" font-size="14.4px" dy="-5.125" transform="translate(-26,-113.6351)">Moved to Different Team<tspan x="449.54412" dy="19.32" font-weight="400" font-size="17.6px">2</tspan></text>
+<rect id="label5_bg" class="for_r5" x="732.37703" y="605.78024" width="109.78422" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label5" class="for_r5" text-anchor="start" x="737.04184" y="626.30525" font-weight="400" font-size="14.4px" dy="-5.125">Position Closed<tspan x="737.04184" dy="19.32" font-weight="400" font-size="17.6px">10</tspan></text>
+<rect id="label6_bg" class="for_r6" x="732.37703" y="342.09945" width="92.18266" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0" transform="translate(0,-27.37381)"></rect>
+<text id="label6" class="for_r6" text-anchor="start" x="737.04184" y="362.62444" font-weight="400" font-size="14.4px" dy="-5.125" transform="translate(0,-27.37381)">Not Selected<tspan x="737.04184" dy="19.32" font-weight="400" font-size="17.6px">44</tspan></text>
+<rect id="label7_bg" class="for_r7" x="256.41099" y="429.21829" width="74.57328" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label7" class="for_r7" text-anchor="middle" x="293.49772" y="449.7433" font-weight="400" font-size="14.4px" dy="-5.125">Screening<tspan x="293.49772" dy="19.32" font-weight="400" font-size="17.6px">30</tspan></text>
+<rect id="label8_bg" class="for_r8" x="387.77314" y="602.65768" width="99.34672" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0" transform="translate(-15,-6.94436)"></rect>
+<text id="label8" class="for_r8" text-anchor="middle" x="437.24658" y="623.18267" font-weight="400" font-size="14.4px" dy="-5.125" transform="translate(-15,-6.94436)">First Interview<tspan x="437.24658" dy="19.32" font-weight="400" font-size="17.6px">8</tspan></text>
+<rect id="label9_bg" class="for_r9" x="588.62812" y="654.57119" width="69.74516" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label9" class="for_r9" text-anchor="start" x="593.29298" y="675.09618" font-weight="400" font-size="14.4px" dy="-5.125">Withdrew<tspan x="593.29298" dy="19.32" font-weight="400" font-size="17.6px">1</tspan></text>
+<rect id="label10_bg" class="for_r10" x="521.10011" y="545.40774" width="120.19047" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0" transform="translate(-10.25114,-18.28259)"></rect>
+<text id="label10" class="for_r10" text-anchor="middle" x="580.99544" y="565.93272" font-weight="400" font-size="14.4px" dy="-5.125" transform="translate(-10.25114,-18.28259)">Second Interview<tspan x="580.99544" dy="19.32" font-weight="400" font-size="17.6px">5</tspan></text>
+<rect id="label11_bg" class="for_r11" x="732.37703" y="540.84658" width="106.33891" height="41.12001" rx="4" fill="#fff" fill-opacity="0.75" stroke="none" stroke-width="0" stroke-opacity="0"></rect>
+<text id="label11" class="for_r11" text-anchor="start" x="737.04184" y="561.3716" font-weight="400" font-size="14.4px" dy="-5.125">Offer Extended<tspan x="737.04184" dy="19.32" font-weight="400" font-size="17.6px">2</tspan></text>
+</g>
+</g></svg>
