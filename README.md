@@ -1,6 +1,6 @@
-# Sankeymatic Pandas Jobhunting CSV Processor
+# Sankey Pandas Jobhunting CSV Processor
 
-This Python script parses a CSV file containing job hunting activity data, with one row per application, using Pandas and prepares data output formatted for use with [SankeyMATIC](https://sankeymatic.com/), a tool for generating Sankey diagrams. The CSV is processed using the column headers as labels, with entries normalized to title case. The script specifically filters out entries where the 'Outcome' column is 'Diary Update', ensuring they are not included in the final analysis. Empty entries in the 'Outcome' column are marked as 'Pending'.
+This Python script interactively parses a CSV file containing job hunting activity data, with one row per application, using Pandas and outputs either markup formatted for use with [SankeyMATIC](https://sankeymatic.com/), an online tool for generating Sankey diagrams, or local graphic visualization using Plotly. The CSV is processed using the column headers as labels, with entries normalized to title case. The script specifically filters out entries where the 'Outcome' column is 'Diary Update', ensuring they are not included in the final analysis. Empty entries in the 'Outcome' column are marked as 'Pending'.
 
 ## Prerequisites
 
@@ -57,6 +57,11 @@ python3 main.py
 
 Follow the prompts to input the path of your CSV file or select one from the current directory.
 
+You will be prompted to choose the output format:
+
+1. **Console**: Prints the output directly to the console - suitable for SankeyMATIC.
+2. **Output File**: Saves the output in a text file named `sankeymatic_markup.txt` suitable for SankeyMATIC.
+3. **Plotly Diagram**: Generates a Sankey diagram locally using Plotly. You can choose to save this diagram in SVG, PNG, or JPG format. No external services required
 ## Sample Output
 
 Output is printed directly to the console and to a file `sankeymatic_markup.txt` suitable for input into SankeyMATIC:
@@ -86,9 +91,13 @@ Second Interview [2] Offer Extended
 Second Interview [1] Position Closed
 Second Interview [2] Not Selected
 ```
-### Sample diagram from above
+### Sample diagram using SankeyMATIC with above
 
 ![alt text](assets/sankeymatic_20240511_144227.svg)
+
+### Sample diagram using plotly with same data
+
+![alt text](assets/plotly.svg)
 
 ## Cleanup (Optional)
 

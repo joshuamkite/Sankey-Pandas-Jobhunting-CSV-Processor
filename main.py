@@ -1,7 +1,9 @@
+
 import pandas as pd
 import datetime
 import os
 import glob
+import plotly.graph_objects as go
 
 
 def load_csv_file():
@@ -89,12 +91,125 @@ final_output = [formatted_time] + (
 )
 
 
-# Write output to file
-with open('sankeymatic_markup.txt', 'w') as file:
-    for output in final_output:
-        file.write(output + '\n')
+def create_sankey_df(application_summary, screening_summary, first_interview_summary, second_interview_summary):
+    # Initialize lists to build DataFrame
+    sources = []
+    targets = []
+    values = []
+
+    # Application to Screening/Outcome
+    for key, value in application_summary.items():
+        sources.append('Application')
+        targets.append(key)
+        values.append(value)
+
+    # Screening to First Interview/Outcome
+    for key, value in screening_summary.items():
+        sources.append('Screening')
+        targets.append(key)
+        values.append(value)
+
+    # First Interview to Second Interview/Outcome
+    for key, value in first_interview_summary.items():
+        sources.append('First Interview')
+        targets.append(key)
+        values.append(value)
+
+    # Second Interview to Outcome
+    for key, value in second_interview_summary.items():
+        sources.append('Second Interview')
+        targets.append(key)
+        values.append(value)
+
+    return pd.DataFrame({'Source': sources, 'Target': targets, 'Value': values})
 
 
-# Print final formatted output
-for output in final_output:
-    print(output)
+def generate_sankey_image(data, format='svg'):
+    # Prepare data
+    labels = list(set(data['Source']).union(set(data['Target'])))
+    label_indices = {label: i for i, label in enumerate(labels)}
+
+    # Create sources, targets, and values arrays for Plotly
+    sources = data['Source'].map(label_indices).tolist()
+    targets = data['Target'].map(label_indices).tolist()
+    values = data['Value'].tolist()
+
+    # Generate a list of colors with 50% opacity
+    color_palette = [
+        'rgba(166,206,227,0.5)',  # Pale Blue
+        'rgba(31,120,180,0.5)',   # Strong Blue
+        'rgba(178,223,138,0.5)',  # Pale Green
+        'rgba(51,160,44,0.5)',    # Strong Green
+        'rgba(251,154,153,0.5)',  # Pale Red
+        'rgba(227,26,28,0.5)',    # Strong Red
+        'rgba(253,191,111,0.5)',  # Pale Orange
+        'rgba(255,127,0,0.5)',    # Strong Orange
+        'rgba(202,178,214,0.5)',  # Pale Purple
+        'rgba(106,61,154,0.5)',   # Strong Purple
+        'rgba(255,255,153,0.5)',  # Light Yellow
+        'rgba(177,89,40,0.5)',    # Dark Brown
+        'rgba(0,0,0,0.5)',        # Black
+        'rgba(177,179,0,0.5)'     # Olive
+    ]
+
+    # Cycle through the color palette if there are more links than colors
+    link_colors = [color_palette[i % len(color_palette)]
+                   for i in range(len(sources))]
+
+    # Create the Sankey diagram
+    fig = go.Figure(data=[go.Sankey(
+        node=dict(
+            pad=15,
+            thickness=20,
+            line=dict(color="black", width=0.5),
+            label=labels
+        ),
+        link=dict(
+            source=sources,
+            target=targets,
+            value=values,
+            color=link_colors  # Apply the generated colors with opacity
+        ))])
+
+    fig.update_layout(title_text="", font_size=10)
+    filename = f'sankey_diagram.{format}'
+    # Save as an image in the chosen format
+    fig.write_image(filename)
+    print(f"Sankey diagram saved as {filename}")
+
+
+def output_picker(final_output):
+    print("Select output format:")
+    print("1: Console")
+    print("2: Output file (sankeymatic_markup.txt)")
+    print("3: Plotly diagram (Image)")
+    choice = input("Enter choice (1, 2, or 3): ")
+
+    if choice == '1':
+        # Print to console
+        for output in final_output:
+            print(output)
+    elif choice == '2':
+        # Write to file
+        with open('sankeymatic_markup.txt', 'w') as file:
+            for output in final_output:
+                file.write(output + '\n')
+        print("Output written to sankeymatic_markup.txt.")
+    elif choice == '3':
+        # Choose image format for Plotly diagram
+        print("Choose the image format:")
+        print("1: SVG")
+        print("2: PNG")
+        print("3: JPG")
+        format_choice = input("Enter choice (1, 2, or 3): ")
+        format_dict = {'1': 'svg', '2': 'png', '3': 'jpg'}
+        # Default to SVG if invalid choice
+        format = format_dict.get(format_choice, 'svg')
+        df_sankey = create_sankey_df(
+            application_summary, screening_summary, first_interview_summary, second_interview_summary)
+        generate_sankey_image(df_sankey, format)
+
+
+# Main execution block
+if __name__ == "__main__":
+    output_picker(final_output)
