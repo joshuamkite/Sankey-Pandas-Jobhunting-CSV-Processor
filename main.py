@@ -134,6 +134,28 @@ def generate_sankey_image(data, format='svg'):
     targets = data['Target'].map(label_indices).tolist()
     values = data['Value'].tolist()
 
+    # Generate a list of colors with 50% opacity
+    color_palette = [
+        'rgba(166,206,227,0.5)',  # Pale Blue
+        'rgba(31,120,180,0.5)',   # Strong Blue
+        'rgba(178,223,138,0.5)',  # Pale Green
+        'rgba(51,160,44,0.5)',    # Strong Green
+        'rgba(251,154,153,0.5)',  # Pale Red
+        'rgba(227,26,28,0.5)',    # Strong Red
+        'rgba(253,191,111,0.5)',  # Pale Orange
+        'rgba(255,127,0,0.5)',    # Strong Orange
+        'rgba(202,178,214,0.5)',  # Pale Purple
+        'rgba(106,61,154,0.5)',   # Strong Purple
+        'rgba(255,255,153,0.5)',  # Light Yellow
+        'rgba(177,89,40,0.5)',    # Dark Brown
+        'rgba(0,0,0,0.5)',        # Black
+        'rgba(177,179,0,0.5)'     # Olive
+    ]
+
+    # Cycle through the color palette if there are more links than colors
+    link_colors = [color_palette[i % len(color_palette)]
+                   for i in range(len(sources))]
+
     # Create the Sankey diagram
     fig = go.Figure(data=[go.Sankey(
         node=dict(
@@ -145,7 +167,8 @@ def generate_sankey_image(data, format='svg'):
         link=dict(
             source=sources,
             target=targets,
-            value=values
+            value=values,
+            color=link_colors  # Apply the generated colors with opacity
         ))])
 
     fig.update_layout(title_text="", font_size=10)
