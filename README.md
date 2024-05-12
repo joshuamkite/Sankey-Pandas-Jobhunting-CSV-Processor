@@ -64,8 +64,6 @@ You will be prompted to choose the output format:
 3. **Plotly Diagram**: Generates a Sankey diagram locally using Plotly. You can choose to save this diagram in SVG, PNG, or JPG format. No external services required
 ## Sample Output
 
-Output is printed directly to the console and to a file `sankeymatic_markup.txt` suitable for input into SankeyMATIC:
-
 **N.B. Below values are fuzzed/synthetic. Whilst representative they do not illustrate figures from an actual job search**
 
 ```
