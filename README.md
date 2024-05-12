@@ -97,7 +97,7 @@ Second Interview [2] Not Selected
 
 ### Sample diagram using plotly with same data
 
-![alt text](assets/sankey_diagram.svg)
+![alt text](assets/plotly.svg)
 
 ## Cleanup (Optional)
 
