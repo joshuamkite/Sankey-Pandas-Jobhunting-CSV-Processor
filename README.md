@@ -10,7 +10,7 @@ This Python script interactively parses a CSV file containing job hunting activi
 
 ## CSV Input Requirements
 
-The script expects a CSV file with specific column headers, as it uses these headers to map and process the data. The expected columns are:
+The script expects a CSV file with specific column headers, as it uses these headers to map and process the data. An example CSV is included. The expected columns are:
 
 - `Who Applied?`: Specifies who applied for the job. Entries should be either 'Me' or 'Them', and will be normalized to title case.
 - `Application Date`: While the expectation is that this field will contain a date, the script checks for any non-null value to denote an application entry.
