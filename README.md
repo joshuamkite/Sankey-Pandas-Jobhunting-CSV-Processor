@@ -1,6 +1,6 @@
-# Sankeymatic Pandas Jobhunting CSV Processor
+# Sankey Pandas Jobhunting CSV Processor
 
-This Python script parses a CSV file containing job hunting activity data, with one row per application, using Pandas and prepares data output formatted for use eithere with [SankeyMATIC](https://sankeymatic.com/), an online tool for generating Sankey diagrams, or local visualization using Plotly. The CSV is processed using the column headers as labels, with entries normalized to title case. The script specifically filters out entries where the 'Outcome' column is 'Diary Update', ensuring they are not included in the final analysis. Empty entries in the 'Outcome' column are marked as 'Pending'.
+This Python script interactively parses a CSV file containing job hunting activity data, with one row per application, using Pandas and outputs either markup formatted for use with [SankeyMATIC](https://sankeymatic.com/), an online tool for generating Sankey diagrams, or local graphic visualization using Plotly. The CSV is processed using the column headers as labels, with entries normalized to title case. The script specifically filters out entries where the 'Outcome' column is 'Diary Update', ensuring they are not included in the final analysis. Empty entries in the 'Outcome' column are marked as 'Pending'.
 
 ## Prerequisites
 
