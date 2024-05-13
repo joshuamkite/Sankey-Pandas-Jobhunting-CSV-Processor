@@ -7,14 +7,17 @@ import plotly.graph_objects as go
 
 
 def load_csv_file():
+    # Search for all CSV files in the current directory
     csv_files = glob.glob('*.csv')
     if csv_files:
         print("Found the following CSV files:")
+        # Enumerate and display found CSV files
         for idx, file in enumerate(csv_files):
             print(f"{idx + 1}: {file}")
         file_index = input(
             "Enter the number of the CSV file you want to use, or specify a path: ")
         try:
+            # Convert input to integer and select file
             file_index = int(file_index) - 1
             if file_index >= 0 and file_index < len(csv_files):
                 return csv_files[file_index]
@@ -40,6 +43,7 @@ df['Who Applied?'] = df['Who Applied?'].str.title()
 # Filter out 'Diary Update' from 'Outcome'
 df = df[df['Outcome'] != 'Diary Update']
 
+# Title case normalization for chosen header columns
 df['Application Exit'] = df['Application Exit'].str.title(
 ) if 'Application Exit' in df.columns else None
 df['Screening Exit'] = df['Screening Exit'].str.title(
@@ -49,16 +53,15 @@ df['First Interview Exit'] = df['First Interview Exit'].str.title(
 df['Second Interview Exit'] = df['Second Interview Exit'].str.title(
 ) if 'Second Interview Exit' in df.columns else None
 
-# Adjust processing logic if necessary
-
 
 def determine_transition(row):
+    # Determine the transition based on screening date being non null value
     if pd.notna(row['Screening Date']):
         return 'Screening'
     return row['Outcome']
 
 
-# Apply normalization and count transitions
+# Apply transition determination across the DataFrame
 df['Application Exit'] = df.apply(determine_transition, axis=1)
 df['Screening Exit'] = df.apply(lambda row: 'First Interview' if pd.notna(
     row['First Interview']) else row['Outcome'], axis=1)
@@ -66,7 +69,7 @@ df['First Interview Exit'] = df.apply(lambda row: 'Second Interview' if pd.notna
     row['Second Interview']) else row['Outcome'], axis=1)
 df['Second Interview Exit'] = df['Outcome']
 
-# Count transitions and normalize outputs
+# Count and format transitions for various stages
 application_summary = df['Application Exit'].value_counts().sort_index()
 screening_summary = df.loc[pd.notna(
     df['Screening Date']), 'Screening Exit'].value_counts().sort_index()
@@ -75,12 +78,12 @@ first_interview_summary = df.loc[pd.notna(
 second_interview_summary = df.loc[pd.notna(
     df['Second Interview']), 'Second Interview Exit'].value_counts().sort_index()
 
-# Who applied? summary
+# Create summary based on 'Who Applied?' column
 totals = df['Who Applied?'].value_counts()
 who_applied_summary = ["I applied to them [{}] Application".format(count) if name == "Me"
                        else "They applied to me [{}] Application".format(count) for name, count in totals.items()]
 
-# Formatting final output
+# Compile all formatted outputs into one list
 final_output = [formatted_time] + (
     who_applied_summary +
     [f"Application [{count}] {exit}" for exit, count in application_summary.items()] +
