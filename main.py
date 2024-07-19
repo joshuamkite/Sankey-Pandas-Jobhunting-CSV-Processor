@@ -1,4 +1,3 @@
-
 import pandas as pd
 import datetime
 import os
@@ -7,6 +6,12 @@ import plotly.graph_objects as go
 
 
 def load_csv_file():
+    """
+    Search for and load a CSV file from the current directory.
+
+    Returns:
+        str: The path to the selected CSV file.
+    """
     # Search for all CSV files in the current directory
     csv_files = glob.glob('*.csv')
     if csv_files:
@@ -55,6 +60,15 @@ df['Second Interview Exit'] = df['Second Interview Exit'].str.title(
 
 
 def determine_transition(row):
+    """
+    Determine the transition based on the screening date.
+
+    Args:
+        row (pd.Series): A row from the DataFrame.
+
+    Returns:
+        str: The determined transition.
+    """
     # Determine the transition based on screening date being non null value
     if pd.notna(row['Screening Date']):
         return 'Screening'
@@ -95,6 +109,18 @@ final_output = [formatted_time] + (
 
 
 def create_sankey_df(application_summary, screening_summary, first_interview_summary, second_interview_summary):
+    """
+    Create a DataFrame for Sankey diagram data.
+
+    Args:
+        application_summary (pd.Series): Summary of application exits.
+        screening_summary (pd.Series): Summary of screening exits.
+        first_interview_summary (pd.Series): Summary of first interview exits.
+        second_interview_summary (pd.Series): Summary of second interview exits.
+
+    Returns:
+        pd.DataFrame: DataFrame containing sources, targets, and values for the Sankey diagram.
+    """
     # Initialize lists to build DataFrame
     sources = []
     targets = []
@@ -128,6 +154,16 @@ def create_sankey_df(application_summary, screening_summary, first_interview_sum
 
 
 def generate_sankey_image(data, format='svg'):
+    """
+    Generate and save a Sankey diagram as an image.
+
+    Args:
+        data (pd.DataFrame): DataFrame containing sources, targets, and values for the Sankey diagram.
+        format (str): The image format to save (default is 'svg').
+
+    Returns:
+        None
+    """
     # Prepare data
     labels = list(set(data['Source']).union(set(data['Target'])))
     label_indices = {label: i for i, label in enumerate(labels)}
@@ -182,23 +218,32 @@ def generate_sankey_image(data, format='svg'):
 
 
 def output_picker(final_output):
+    """
+    Allow the user to select the output format for the final result.
+
+    Args:
+        final_output (list): List of formatted output strings.
+
+    Returns:
+        None
+    """
     print("Select output format:")
     print("1: Console")
     print("2: Output file (sankeymatic_markup.txt)")
     print("3: Plotly diagram (Image)")
     choice = input("Enter choice (1, 2, or 3): ")
 
-    if choice == '1':
+    if (choice == '1'):
         # Print to console
         for output in final_output:
             print(output)
-    elif choice == '2':
+    elif (choice == '2'):
         # Write to file
         with open('sankeymatic_markup.txt', 'w') as file:
             for output in final_output:
                 file.write(output + '\n')
         print("Output written to sankeymatic_markup.txt.")
-    elif choice == '3':
+    elif (choice == '3'):
         # Choose image format for Plotly diagram
         print("Choose the image format:")
         print("1: SVG")
