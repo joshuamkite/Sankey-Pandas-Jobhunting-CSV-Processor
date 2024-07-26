@@ -1,6 +1,5 @@
 import pandas as pd
 import datetime
-import os
 import glob
 import plotly.graph_objects as go
 
@@ -57,6 +56,8 @@ df['First Interview Exit'] = df['First Interview Exit'].str.title(
 ) if 'First Interview Exit' in df.columns else None
 df['Second Interview Exit'] = df['Second Interview Exit'].str.title(
 ) if 'Second Interview Exit' in df.columns else None
+df['Third Interview Exit'] = df['Third Interview Exit'].str.title(
+) if 'Third Interview Exit' in df.columns else None
 
 
 def determine_transition(row):
@@ -81,7 +82,9 @@ df['Screening Exit'] = df.apply(lambda row: 'First Interview' if pd.notna(
     row['First Interview']) else row['Outcome'], axis=1)
 df['First Interview Exit'] = df.apply(lambda row: 'Second Interview' if pd.notna(
     row['Second Interview']) else row['Outcome'], axis=1)
-df['Second Interview Exit'] = df['Outcome']
+df['Second Interview Exit'] = df.apply(lambda row: 'Third Interview' if pd.notna(
+    row['Third Interview']) else row['Outcome'], axis=1)
+df['Third Interview Exit'] = df['Outcome']
 
 # Count and format transitions for various stages
 application_summary = df['Application Exit'].value_counts().sort_index()
@@ -91,6 +94,8 @@ first_interview_summary = df.loc[pd.notna(
     df['First Interview']), 'First Interview Exit'].value_counts().sort_index()
 second_interview_summary = df.loc[pd.notna(
     df['Second Interview']), 'Second Interview Exit'].value_counts().sort_index()
+third_interview_summary = df.loc[pd.notna(
+    df['Third Interview']), 'Third Interview Exit'].value_counts().sort_index()
 
 # Create summary based on 'Who Applied?' column
 totals = df['Who Applied?'].value_counts()
@@ -103,12 +108,13 @@ final_output = [formatted_time] + (
     [f"Application [{count}] {exit}" for exit, count in application_summary.items()] +
     [f"Screening [{count}] {exit}" for exit, count in screening_summary.items()] +
     [f"First Interview [{count}] {exit}" for exit, count in first_interview_summary.items()] +
-    [f"Second Interview [{count}] {exit}" for exit,
-        count in second_interview_summary.items()]
+    [f"Second Interview [{count}] {exit}" for exit, count in second_interview_summary.items()] +
+    [f"Third Interview [{count}] {exit}" for exit,
+        count in third_interview_summary.items()]
 )
 
 
-def create_sankey_df(application_summary, screening_summary, first_interview_summary, second_interview_summary):
+def create_sankey_df(application_summary, screening_summary, first_interview_summary, second_interview_summary, third_interview_summary):
     """
     Create a DataFrame for Sankey diagram data.
 
@@ -117,6 +123,7 @@ def create_sankey_df(application_summary, screening_summary, first_interview_sum
         screening_summary (pd.Series): Summary of screening exits.
         first_interview_summary (pd.Series): Summary of first interview exits.
         second_interview_summary (pd.Series): Summary of second interview exits.
+        third_interview_summary (pd.Series): Summary of third interview exits.
 
     Returns:
         pd.DataFrame: DataFrame containing sources, targets, and values for the Sankey diagram.
@@ -144,9 +151,15 @@ def create_sankey_df(application_summary, screening_summary, first_interview_sum
         targets.append(key)
         values.append(value)
 
-    # Second Interview to Outcome
+    # Second Interview to Third Interview/Outcome
     for key, value in second_interview_summary.items():
         sources.append('Second Interview')
+        targets.append(key)
+        values.append(value)
+
+    # Third Interview to Outcome
+    for key, value in third_interview_summary.items():
+        sources.append('Third Interview')
         targets.append(key)
         values.append(value)
 
@@ -254,7 +267,7 @@ def output_picker(final_output):
         # Default to SVG if invalid choice
         format = format_dict.get(format_choice, 'svg')
         df_sankey = create_sankey_df(
-            application_summary, screening_summary, first_interview_summary, second_interview_summary)
+            application_summary, screening_summary, first_interview_summary, second_interview_summary, third_interview_summary)
         generate_sankey_image(df_sankey, format)
 
 
